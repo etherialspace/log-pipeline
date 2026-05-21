@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogStream Dashboard</title>
+    <meta name="description" content="A real-time log ingestion dashboard.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-elements">
+        <div class="glow blob-1"></div>
+        <div class="glow blob-2"></div>
+    </div>
+    
+    <div class="dashboard-container">
+        <header class="glass-panel">
+            <div class="header-content">
+                <h1><span class="gradient-text">LogStream</span> Dashboard</h1>
+                <div class="controls">
+                    <button id="refresh-btn" class="btn primary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.92-10.44l5.67-5.67"/></svg>
+                        Refresh
+                    </button>
+                    <div class="auto-refresh-toggle">
+                        <label class="switch">
+                            <input type="checkbox" id="auto-refresh-toggle" checked>
+                            <span class="slider round"></span>
+                        </label>
+                        <span>Live Sync</span>
+                    </div>
+                </div>
+            </div>
+            <div class="stats-bar">
+                <div class="stat-card">
+                    <span class="stat-label">Total Logs</span>
+                    <span class="stat-value" id="total-logs">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Errors</span>
+                    <span class="stat-value error-text" id="error-logs">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Services Active</span>
+                    <span class="stat-value" id="services-active">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="glass-panel table-container">
+            <table id="logs-table">
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Level</th>
+                        <th>Service</th>
+                        <th>Trace ID</th>
+                        <th>Latency</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody id="logs-body">
+                    <!-- Logs will be inserted here dynamically -->
+                </tbody>
+            </table>
+            <div id="loading-state" class="loading-state">
+                <div class="spinner"></div>
+                <p>Waiting for logs...</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
